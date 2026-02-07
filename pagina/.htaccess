@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+#RewriteEngine On
+#Options +Indexes
+#Options +FollowSymlinks
+#RewriteEngine on
+#RewriteBase 3/www.taxi-factoria.com/
+#RewriteRule ^(.*)/(.*)/ products.php?cat=$1&subcat=$2
+#</IfModule>
+RewriteEngine On
+ 	 RewriteCond %{REQUEST_FILENAME} -f [OR]
+ 	 RewriteCond %{REQUEST_FILENAME} -d
+  	 RewriteRule .+ - [L]
+	#RewriteRule ^([a-zA-Z0-9\-]+)/([a-zA-Z0-9\-]+)/?$ catalogo.php?parametro=valor&categoria=$1&sub=$2 [QSA,L]
+	  RewriteRule ^(.*)/(.*)/(.*)/ catalogo2.php?parametro=valor&enlace=$1&categoria=$2&_pagi_pg=$3 [QSA,L]
+	  RewriteRule ^(.*)/(.*)/ catalogo.php?parametro=valor&enlaces=$1&categoria=$2 [QSA,L]
+	  RewriteRule ^(.*)/ index.php?parametro=valor&enlaces=$1 [QSA,L]
+	 #RewriteRule ^([a-zA-Z0-9\-]+)/?$ index.php?parametro=valor&key=$1		 
+</IfModule>
