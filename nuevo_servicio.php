@@ -84,11 +84,11 @@ if(isset($_POST['btnguardaritem'])){
         '$fechar',       
         '$titulo',       
         '$descripcion',       
-        '$tipo',       
+        'recurso',       
         '$foto',       
         '$link',       
         '$precio',        
-        'desactivado',
+        'activado',
         '$obs',
         '$moneda'    )";
     
@@ -118,30 +118,27 @@ if(isset($_POST['btnguardaritem'])){
             <form method="post" enctype="multipart/form-data">
                 <div id="datos-cargardos-usuario">
                     <div class="row" style="margin: 0px;">                                
-                        <div class="col-md-3 col-12">
+                        <!-- <div class="col-md-3 col-12">
                             <strong class="labels-input">Tipo</strong>
                             <select name="tipo" id="tipo" required>
                                 <option value="" selected disabled>Seleccionar tipo</option>
                                 <option value="recurso">Recurso</option>
                                 <option value="pagina">Página</option>
-                                <!-- <option value="grabacion">Grabación</option> -->
+                                <option value="grabacion">Grabación</option>
                                 <option value="edicion">Edición</option>
                                 <option value="diseno">Diseño</option>
                             </select>                            
-                        </div>
-                        <div class="col-md-3 col-12">
+                        </div> -->
+                        <div class="col-md-6 ">
                             <strong class="labels-input">Título *</strong>
-                            <input type="text" name="titulo" id="titulo" class="mb-1" required>
+                            <input type="text" name="titulo" id="titulo" class="mb-1" required placeholder="Ej: Recursos de diseño web">
                         </div> 
-                        <div class="col-md-3 col-12">
-                            <strong class="labels-input">Descripción *</strong>
-                            <input type="text" name="descripcion" id="descripcion" class="mb-1" required>
-                        </div> 
-                        <div class="col-md-2 col-12">
+                                 
+                        <div class="col-md-3 ">
                             <strong class="labels-input">Precio</strong>
-                            <input type="text" name="precio" id="precio" class="mb-1" placeholder="Ej: 50.00">
-                        </div>                         
-                        <div class="col-md-1 col-12">
+                            <input type="text" name="precio" id="precio" class="mb-1" placeholder="50.00" >
+                        </div>                          
+                        <div class="col-md-3 ">
                             <strong class="labels-input">Moneda</strong>
                             <select name="moneda" id="moneda">
                                 <option value="sol" selected>SOL</option>                                
@@ -156,7 +153,12 @@ if(isset($_POST['btnguardaritem'])){
                             </select>
                         </div>         -->               
                     </div>
-                    
+                    <div class="row" style="margin: 0px">
+                        <div class="col-md-12 ">
+                            <strong class="labels-input">Descripción *</strong>
+                            <textarea type="text" name="descripcion" id="descripcion" class="mb-1" ></textarea>
+                        </div>                
+                    </div>
                     <!-- <div class="row" style="margin: 15px 0 0 0;">                                
                         <div class="col-md-3 col-12">
                             <strong class="labels-input">Cupón</strong>
@@ -170,14 +172,16 @@ if(isset($_POST['btnguardaritem'])){
                     </div> -->
                     
                     <div class="row" style="margin: 15px 0 0 0;">                                
-                        <div class="col-md-4 col-12">
+                        <div class="col-md-4">
                             <strong class="labels-input">Imagen</strong>
                             <input type="file" name="imagenitem" id="imagenitem" class="mb-1" accept="image/*">
-                        </div>
-                        <div class="col-md-4 col-12">
+                        </div>                                                         
+                    </div>
+                    <div class="row" style="margin: 0px;">
+                        <div class="col-md-12 ">
                             <strong class="labels-input">Tags (obs)</strong>
                             <input type="text" name="obs" id="obs" class="mb-1" placeholder="Tags separados por comas">
-                        </div>                                                
+                        </div>               
                     </div>
                 </div>                            
                 

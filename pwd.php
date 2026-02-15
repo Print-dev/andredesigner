@@ -1,4 +1,4 @@
-<?php
+<?php 
 
-$pw = md5("123");
-echo $pw;
+$hash = password_hash('123', PASSWORD_BCRYPT);
+echo $hash;

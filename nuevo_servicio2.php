@@ -106,7 +106,7 @@ if(isset($_POST['btnguardaritem'])){
                         </div>
                         <div class="col-3">
                             <strong class="labels-input" >Color</strong>
-                            <input type="text" name="color" id="color" class="mb-1" value="<?php echo $_SESSION['usuario'] ?? null ?>">
+                            <input type="text" name="color" id="color" class="mb-1">
                         </div>
                         <div class="col-3">
                             <strong class="labels-input" >Ubicación</strong>

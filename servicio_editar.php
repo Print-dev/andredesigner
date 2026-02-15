@@ -9,14 +9,13 @@ $idage = $_GET['id'] ?? null;
     mysqli_query($connection, "UPDATE INTO agenda set est = 'C' WHERE id = '$id'");
 } */
 if(isset($_POST['btneditaroferta'])){
-    $cupon = $_POST['cupon'] ?? null; 
+    //$cupon = $_POST['cupon'] ?? null; 
     $dscto = $_POST['dscto'] ?? null; 
     $fechalim = $_POST['fechalim'] ?? null; 
     $horalim = $_POST['horalim'] ?? null; 
-    $user = $_SESSION['usuario'] ?? 'system'; // Usuario de sesión
+    $user = $_SESSION['nomcli'] ?? 'system'; // Usuario de sesión
 
     mysqli_query($connection, "UPDATE a_servicios SET 
-        cupon = '$cupon',
         dscto = '$dscto',
         fecha_oferta_limite = '$fechalim',
         hora_oferta_limite = '$horalim',
@@ -35,7 +34,7 @@ if(isset($_POST['btneditar'])){
     $foto = $_POST['imagenitem'] ?? $servobt['img']; // Mantener la imagen actual si no se sube una nueva
     $upload_dir = "items/";
 
-    $user = $_SESSION['usuario'] ?? 'system'; // Usuario de sesión
+    $user = $_SESSION['nomcli'] ?? 'system'; // Usuario de sesión
 
     if(isset($_FILES['imagenitem']) && $_FILES['imagenitem']['error'] === UPLOAD_ERR_OK) {
         $logo_file = $_FILES['imagenitem'];

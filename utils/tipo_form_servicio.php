@@ -10,19 +10,15 @@ if($_POST['tipo'] == "detalles"){
         <h5 style="margin-bottom: 20px;">Editar Detalle</h5>
     </div>
     <div class="row" style="margin: 0px;">                                        
-        <div class="col-md-3 col-12">
+        <div class="col-md-6 col-12">
             <strong class="labels-input">Título</strong>
             <input type="text" name="titulo" id="titulo" class="mb-1" value="<?php echo $agendaobt['titulo'] ?? ''; ?>" required>
-        </div> 
-        <div class="col-md-3 col-12">
-            <strong class="labels-input">Descripción</strong>
-            <input type="text" name="descripcion" id="descripcion" class="mb-1" value="<?php echo $agendaobt['descripcion'] ?? ''; ?>" required>
-        </div> 
-        <div class="col-md-2 col-12">
+        </div>         
+        <div class="col-md-3">
             <strong class="labels-input">Precio</strong>
             <input type="text" name="precio" id="precio" class="mb-1" placeholder="Ej: 50.00" value="<?php echo $agendaobt['precio'] ?? ''; ?>">
-        </div>                         
-        <div class="col-md-1 col-12">
+        </div>  
+        <div class="col-md-3 col-12">
             <strong class="labels-input">Moneda</strong>
             <select name="moneda" id="moneda">
                 <option value="sol" <?php echo ($agendaobt['moneda'] == 'sol') ? 'selected' : ''; ?>>SOL</option>                                
@@ -30,7 +26,12 @@ if($_POST['tipo'] == "detalles"){
             </select>
         </div>                            
     </div>
-    
+    <div class="row" style="margin: 0px;">
+        <div class="col-md-12">
+            <strong class="labels-input">Descripción</strong>
+            <textarea type="text" name="descripcion" id="descripcion" class="mb-1" ><?php echo $agendaobt['descripcion'] ?? ''; ?></textarea>
+        </div> 
+    </div>
     <div class="row" style="margin: 15px 0 0 0;">                                
         <div class="col-md-4 col-12">
             <strong class="labels-input">Imagen</strong>            
@@ -44,11 +45,13 @@ if($_POST['tipo'] == "detalles"){
                 <p>No hay imagen cargada</p>
             <?php endif; ?>
             <input type="file" name="imagenitem" id="imagenitem" class="mb-1" accept="image/*">
-        </div>
-        <div class="col-md-4 col-12">
+        </div>                                               
+    </div>
+    <div class="row" style="margin: 0px;">
+        <div class="col-md-12">
             <strong class="labels-input">Tags (obs)</strong>
             <input type="text" name="obs" id="obs" class="mb-1" placeholder="Tags separados por comas" value="<?php echo $agendaobt['obs'] ?? ''; ?>">
-        </div>                                                
+        </div> 
     </div>
     <button type="submit" name="btneditar" class="btn btn-primary">Guardar</button>       
 </form>     
@@ -62,10 +65,10 @@ if($_POST['tipo'] == "oferta"){
     </div>
     
     <div class="row" style="margin: 15px 0 0 0;">                                
-        <div class="col-md-3 col-12">
+        <!-- <div class="col-md-3 col-12">
             <strong class="labels-input">Cupón</strong>
             <input type="text" name="cupon" id="cupon" class="mb-1" placeholder="Código de cupón" value="<?php echo $agendaobt['cupon'] ?? ''; ?>">
-        </div>
+        </div> -->
         <div class="col-md-3 col-12">
             <strong class="labels-input">Descuento (%)</strong>
             <input type="text" name="dscto" id="dscto" class="mb-1" placeholder="Ej: 10" value="<?php echo $agendaobt['dscto'] ?? ''; ?>">

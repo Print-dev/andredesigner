@@ -479,6 +479,29 @@ include 'cn.php';
                     <span class="menu-text">Servicios</span>
                 </a>
             </li>
+            <li class="menu-item">
+                <a class="menu-link <?php echo ($_SESSION['current_page'] ?? '') == 'agenda' ? 'active' : ''; ?>" href="agenda.php" data-page="agenda">
+                    <span class="menu-icon"><i class="bi bi-calendar2-event-fill"></i></span>
+                    <span class="menu-text">Agenda</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link <?php echo ($_SESSION['current_page'] ?? '') == 'cupones' ? 'active' : ''; ?>" href="cupones.php" data-page="cupones">
+                    <span class="menu-icon"><i class="bi bi-ticket-fill"></i></span>
+                    <span class="menu-text">Cupones</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link <?php echo ($_SESSION['current_page'] ?? '') == 'egresos' ? 'active' : ''; ?>" onclick="toggleSubmenu(event)"  data-page="egresos">
+                    <span class="menu-icon"><i class="bi bi-cash-coin"></i></span>
+                    <span class="menu-text">Movimiento</span>
+                    <span class="dropdown-arrow">▼</span>
+                </a>
+                <ul class="submenu" id="configSubmenu">
+                    <li class="submenu-item"><a href="gastos.php">Gastos</a></li>                    
+                    <li class="submenu-item"><a href="ingresos.php">Ingresos</a></li>                    
+                </ul>
+            </li>            
             <!-- <li class="menu-item">
                 <a class="menu-link <?php echo ($_SESSION['current_page'] ?? '') == 'ventas' ? 'active' : ''; ?>" onclick="toggleSubmenu(event)"  data-page="ventas">
                     <span class="menu-icon"><i class="bi bi-pie-chart-fill"></i></span>
