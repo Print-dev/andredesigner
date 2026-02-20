@@ -467,12 +467,12 @@ include 'cn.php';
                     <span class="menu-text">Dashboard</span>
                 </a>
             </li>
-            <li class="menu-item">
+            <!-- <li class="menu-item">
                 <a class="menu-link <?php echo ($_SESSION['current_page'] ?? '') == 'inicio' ? 'active' : ''; ?>" href="inicio.php" data-page="inicio">
                     <span class="menu-icon"><i class="bi bi-box-seam-fill"></i></span>
                     <span class="menu-text">Inicio</span>
                 </a>
-            </li>
+            </li> -->
             <li class="menu-item">
                 <a class="menu-link <?php echo ($_SESSION['current_page'] ?? '') == 'servicios' ? 'active' : ''; ?>" href="servicios.php" data-page="servicios">
                     <span class="menu-icon"><i class="bi bi-box-seam-fill"></i></span>
@@ -492,6 +492,12 @@ include 'cn.php';
                 </a>
             </li>
             <li class="menu-item">
+                <a class="menu-link <?php echo ($_SESSION['current_page'] ?? '') == 'movimientos' ? 'active' : ''; ?>" href="movimientos.php" data-page="movimientos">
+                    <span class="menu-icon"><i class="bi bi-cash-coin"></i></span>
+                    <span class="menu-text">Movimientos</span>
+                </a>
+            </li>
+            <!-- <li class="menu-item">
                 <a class="menu-link <?php echo ($_SESSION['current_page'] ?? '') == 'egresos' ? 'active' : ''; ?>" onclick="toggleSubmenu(event)"  data-page="egresos">
                     <span class="menu-icon"><i class="bi bi-cash-coin"></i></span>
                     <span class="menu-text">Movimiento</span>
@@ -501,7 +507,7 @@ include 'cn.php';
                     <li class="submenu-item"><a href="gastos.php">Gastos</a></li>                    
                     <li class="submenu-item"><a href="ingresos.php">Ingresos</a></li>                    
                 </ul>
-            </li>            
+            </li>      -->       
             <!-- <li class="menu-item">
                 <a class="menu-link <?php echo ($_SESSION['current_page'] ?? '') == 'ventas' ? 'active' : ''; ?>" onclick="toggleSubmenu(event)"  data-page="ventas">
                     <span class="menu-icon"><i class="bi bi-pie-chart-fill"></i></span>

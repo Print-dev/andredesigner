@@ -93,7 +93,8 @@ if(isset($_POST['btnguardaritem'])){
         '$moneda'    )";
     
     if(mysqli_query($connection, $query)) {
-        echo "<script>alert('Servicio guardado correctamente'); window.location='servicios.php';</script>";
+        //echo "<script>alert('Servicio guardado correctamente'); window.location='servicios.php';</script>";
+        echo "<script>window.location='servicios.php';</script>";
     } else {
         echo "<script>alert('Error al guardar: " . mysqli_error($connection) . "');</script>";
     }

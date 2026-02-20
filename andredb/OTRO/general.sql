@@ -1,12 +1,12 @@
-DROP DATABASE andredb;
 CREATE DATABASE andredb;
 USE andredb;
 
-/* CREATE TABLE unidades_negocio (
+CREATE TABLE unidades_negocio (
 	id	int auto_increment primary key,
     nombre varchar(80) null,
     codigo  varchar(80) null
-) ENGINE = INNODB; */
+) ENGINE = INNODB;
+
 
 CREATE TABLE a_usuarios (
 	id	int auto_increment primary key,
@@ -34,8 +34,6 @@ CREATE TABLE a_usuarios (
     estado varchar(200) null,
     obs TEXT NULL
 )ENGINE=INNODB;
-INSERT INTO a_usuarios (nombre, user, clave, obs) VALUES ('Avalos, Romero, Royer', 'Royer', '$2y$10$YuM09FIFzdK8UxBp1mLC8.irxSYnXehxJQFMT.ftCiaNRCtFKIuCC','#F54927');
-select * from a_servicios;
 
 CREATE  TABLE a_servicios (
 	id	int auto_increment primary key,
@@ -46,6 +44,7 @@ CREATE  TABLE a_servicios (
     img  text null,
     link text null,
     precio	varchar(20) null,
+    cupon	varchar(20) null,
     hora_oferta_limite time null,
     fecha_oferta_limite date null,
     dscto 	varchar(20) null,
@@ -57,7 +56,7 @@ CREATE  TABLE a_servicios (
 	obs1 	text null, -- estado para ver en web
     obs2 	text null
 )ENGINE=INNODB;
-select * from a_producto_archivos;
+
 create TABLE a_producto_archivos (
 	id int auto_increment primary key,
     productoid	int null,
@@ -76,47 +75,23 @@ CREATE TABLE a_tablas (
     obs text null,
     estado varchar(5)
 )ENGINE=INNODB;
-select * from a_tablas
-INSERT INTO a_tablas (tabla) VALUES ('unidad_negocio');
-INSERT INTO a_tablas (tabla, hijo ,obs) VALUES ('grabaciones', 1,'GBR');
-INSERT INTO a_tablas (tabla, hijo ,obs) VALUES ('paginasweb', 1,'PGW');
-INSERT INTO a_tablas (tabla, hijo ,obs) VALUES ('diseño', 1,'DSG');
-INSERT INTO a_tablas (tabla, hijo ,obs) VALUES ('fotografia', 1,'FTG');
-INSERT INTO a_tablas (tabla, hijo ,obs) VALUES ('edicionvideo', 1,'EDV');
-INSERT INTO a_tablas (tabla, hijo ,obs) VALUES ('recursos', 1,'REC');
 
-INSERT INTO a_panel_movimientos (unidad_negocio_id, concepto, monto) VALUES (7,'example 1', 50.00);
 CREATE TABLE a_panel_movimientos (
 	id int auto_increment primary key,
-    donde varchar(20) null, -- web, etc.
-    cliente text null, -- cliente:nombre:id | invitado:nombre:id
-    unidad_negocio_id int null, -- por defecto sera 1: 
+    unidad_negocio_id int null,
     tipo varchar(20) null, -- INGRESO, GASTO 
     concepto text null,
-    cantidad int null,
-    precio decimal(10,2) null, -- precio_vendido
-    monto DECIMAL(10,2) NULL, -- precio_monto
-    fecha datetime null, -- fecha de cuando se realizo ese movimiento, puede ser actual o pasado
-    referencia int null, -- nommbre y id del servicio 
-    modo varchar(80) null, -- MP : Mercado Pago
+    monto DECIMAL(10,2) NULL,
+    fecha date null, -- fecha de cuando se realizo ese movimiento, puede ser actual o pasado
+    referencia varchar(200) null, -- nommbre y id del servicio
+    modo varchar(80) null,
 	metodopago varchar(80) null, -- ejemplo: yape, tarjeta, etc
     ope	varchar(120) null, -- codigo de operacion de la compra, mas que todo para poder agrupar
     idagenda int null, -- en caso hayan asignado una filmacion para tal fecha
     usuario_registrador varchar(120) null,
-    fechar datetime null, -- fecha de registro automatico de este movimiento
-	cuponusado int null,
-    obs text null,
-    obs2 text null,
-    obs3 text null
+    fechar date null -- fecha de registro automatico de este movimiento
+    
+    
 ) ENGINE = INNODB;
 
-CREATE TABLE a_cupones (
-	id int auto_increment primary key,
-    codigo varchar(10) null,
-    dscto int null,
-    fechafin date null,
-    estado 	varchar(10) null,
-    hijo 	int null -- se refiere a que producto aplica este cupon
-) ENGINE = INNODB;
-select * from a_cupones
 SELECT  * FROM a_servicios

@@ -1,5 +1,14 @@
 <?php session_start(); ini_set('display_errors', 0);
-$_SESSION['current_page'] = 'servicios'; include "head.php";?>
+$_SESSION['current_page'] = 'cupones'; include "head.php";
+
+if(isset($_POST['btnborrar'])){
+    $id = $_POST['idevento'] ?? '';
+    if(!empty($id)){
+        mysqli_query($connection, "DELETE FROM a_cupones WHERE id = '$id'");
+        echo "<script> window.location.href='cupones.php';</script>";
+    }
+}
+?>
 <link rel="stylesheet" href="blite.css">
 <link rel="stylesheet" href="tablas.css">
 <style>
@@ -111,50 +120,34 @@ $_SESSION['current_page'] = 'servicios'; include "head.php";?>
                     
                 </script>
             <div style="display: flex; justify-content: space-between;padding-bottom: 15px;">
-                <h5 style="margin-bottom: 20px;position: relative;top: 10px;">Servicios</h5>
+                <h5 style="margin-bottom: 20px;position: relative;top: 10px;">Cupones</h5>
                 <div>
-                    <a  href="nuevo_servicio.php" class="btn btn-primary">Nuevo</a>
-                    <button type="button" class="btn btn-primary" onclick="window.location.href='utils/exportar_inventario.php'">Excel</button>
-
+                    <a  href="cupon_nuevo.php" class="btn btn-primary">Nuevo</a>                    
                 </div>
-            </div>
-            <div style="padding-bottom: 15px;">                
-                <div class="row" style="margin: 0;">
-                    <div class="col-md-12">
-                        <strong>Buscar por nombre</strong>
-                        <input type="text" name="descripcion" onkeyup="buscaritem(this.value)" placeholder="Escritorio negro...">                        
-                    </div>                    
-                </div> 
-            </div>
+            </div>            
         </div>
         <div class="row" style="margin: 0;">
             <div class="table-responsive">                
                 <table class="table" id="tbdoytipousuarios">
                     <thead >
                         <tr style="background-color: transparent;">                            
-                            <th>Nombre</th>                            
-                            <th>Tipo</th>
-                            <th>Precio</th>
-                            <th>Mostrar en Pag</th>
-                            <th>Estado</th>
-                            <th></th>
+                            <th>Codigo</th>
+                            <th>Descuento</th>
+                            <th>Vence</th>
+                            <th>Estado</th>                            
                         </tr>
                     </thead>
                     <tbody id="tbodyitems">
                         <?php 
-                        $query = "SELECT * FROM a_servicios order by id desc";
+                        $query = "SELECT * FROM a_cupones order by id desc";
                         $result = mysqli_query($connection, $query);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo "<tr>";
-                                echo "<td>" . $row['titulo'] . "</td>";
-                                echo "<td>" . $row['tipo'] . "</td>";
-                                echo "<td>" . $row['precio'] . " (" . $row['moneda'] . ")". "</td>";
-                                echo '<td><select name="mostrarweb" id="mostrarweb">
-                                <option value="si" '.($row['obs1'] == "si" ? "selected" : "").'>Si</option>
-                                <option value="no" '.($row['obs1'] == "no" ? "selected" : "").'>No</option>
-                                </select></td>';
-                                echo '<td><select name="estado" id="estado">
+                                echo "<td style='text-align: center;'>" . $row['codigo'] . "</td>";
+                                echo "<td style='text-align: center;'>S/ " . $row['dscto'] . "</td>";                                
+                                echo "<td style='text-align: center;'>" . $row['fechafin'] . "</td>";                                
+                                echo '<td style="text-align: center;"><select name="estado" id="estado">
                                 <option value="activado" '.($row['estado'] == "activado" ? "selected" : "").'>Activo</option>
                                 <option value="desactivado" '.($row['estado'] == "desactivado" ? "selected" : "").'>Desactivado</option>
                                 </select></td>';
@@ -163,7 +156,6 @@ $_SESSION['current_page'] = 'servicios'; include "head.php";?>
                                             <button class='btn-menu' onclick='toggleMenu({$row['id']})'>&#8942;</button>
                                             <div class='menu-opciones' id='menu-{$row['id']}'>                            
                                                 <form action=''><a class='btneditar-acc'  href='servicio_editar.php?id=" . $row['id'] . "'>Editar</a></form>
-                                                <form action=''><a class='btneditar-acc'  href='servicio_recaudado.php?id=" . $row['id'] . "'>Recaudado</a></form>
                                                 <form method='post'>
                                                     <input type='hidden' name='idevento' value='$row[id]'>
                                                     <button type='submit' class='btneditar-acc btn btn-danger' name='btnborrar' style='background:transparent;border:none;'>Borrar</button>

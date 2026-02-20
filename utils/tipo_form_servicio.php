@@ -131,7 +131,7 @@ if($_POST['tipo'] == "oferta"){
                             echo "<tr>";
                             echo "<td>" . $rowartire['nombre'] . "</td>";
                             echo "<td>" . $rowartire['tamano'] . "</td>";
-                            echo "<td><form method='post' style='margin: 0;'><input type='hidden' name='idproductoarchivo' value='$rowartire[id]'><button type='submit' name='btnEliminarArchivo' class='btn btn-danger'><i class='bi bi-trash-fill'></i></button></form></td>";
+                            echo "<td><div style='display:flex; gap:5px;'><form method='post' style='margin: 0;'><input type='hidden' name='idproductoarchivo' value='$rowartire[id]'><button type='submit' name='btnEliminarArchivo' class='btn btn-danger'><i class='bi bi-trash-fill'></i></button></form><a class='btn btn-danger' href='andredesiger/uploads/productos/" . $rowartire['url'] . "' download><i class='bi bi-download'></i></a></div></td>";
                             echo "</tr>";
                         }
                         ?>
